@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f0">
+  <title>Connexion | Votre espace</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17211f;
+      --muted: #68716e;
+      --line: #dedfd9;
+      --paper: #f6f5f0;
+      --white: #fff;
+      --green: #214e43;
+      --green-dark: #183c34;
+      --focus: #397c67;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      display: grid;
+      grid-template-columns: minmax(300px, 0.92fr) minmax(380px, 1.08fr);
+      min-height: 100vh;
+      padding: 22px;
+      gap: 22px;
+    }
+
+    .welcome {
+      position: relative;
+      display: flex;
+      min-height: calc(100vh - 44px);
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      padding: clamp(30px, 5vw, 72px);
+      color: #f5f3e9;
+      background-color: var(--green);
+      background-image: repeating-linear-gradient(135deg, transparent 0 42px, rgb(255 255 255 / 4%) 43px 44px, transparent 45px 86px);
+    }
+
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      width: fit-content;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .wordmark-mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border: 1px solid rgb(255 255 255 / 48%);
+      border-radius: 50%;
+      font-family: Georgia, serif;
+      font-size: 20px;
+    }
+
+    .welcome-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 440px;
+      padding: 70px 0;
+      animation: rise-in 650ms ease-out both;
+    }
+
+    .eyebrow {
+      margin: 0 0 22px;
+      color: #c9d8cc;
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 430px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(42px, 5.2vw, 72px);
+      font-weight: 400;
+      line-height: 1.04;
+    }
+
+    .welcome-copy p:last-child {
+      max-width: 340px;
+      margin: 24px 0 0;
+      color: #d3ded5;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .welcome-footer {
+      color: #c9d8cc;
+      font-size: 12px;
+    }
+
+    .signin {
+      display: flex;
+      min-height: calc(100vh - 44px);
+      align-items: center;
+      justify-content: center;
+      padding: 44px 28px;
+      background: var(--white);
+    }
+
+    .signin-content {
+      width: min(100%, 390px);
+      animation: rise-in 650ms 80ms ease-out both;
+    }
+
+    .signin h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 38px;
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .intro {
+      margin: 12px 0 34px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .google-button {
+      display: flex;
+      width: 100%;
+      min-height: 54px;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      padding: 12px 18px;
+      border: 1px solid #c9ccc7;
+      border-radius: 4px;
+      color: #303633;
+      background: #fff;
+      font: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 140ms ease, border-color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+    }
+
+    .google-button:hover {
+      border-color: #9da39e;
+      background: #fafbf9;
+      box-shadow: 0 2px 6px rgb(23 33 31 / 8%);
+    }
+
+    .google-button:active { transform: translateY(1px); }
+
+    .google-button:focus-visible {
+      outline: 3px solid rgb(57 124 103 / 32%);
+      outline-offset: 3px;
+    }
+
+    .google-mark { width: 20px; height: 20px; flex: 0 0 auto; }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 28px 0 20px;
+      color: #89908c;
+      font-size: 12px;
+    }
+
+    .divider::before, .divider::after {
+      height: 1px;
+      flex: 1;
+      background: var(--line);
+      content: "";
+    }
+
+    .notice {
+      min-height: 50px;
+      margin: 0;
+      padding: 13px 15px;
+      border-left: 3px solid var(--green);
+      color: #4c5652;
+      background: #f3f5f1;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .privacy {
+      margin: 25px 0 0;
+      color: #7a827e;
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .privacy a {
+      color: var(--green-dark);
+      text-underline-offset: 3px;
+    }
+
+    @keyframes rise-in {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 760px) {
+      .page { grid-template-columns: 1fr; padding: 12px; gap: 12px; }
+      .welcome { min-height: 250px; padding: 24px; }
+      .welcome-copy { padding: 38px 0 22px; }
+      .welcome-copy .eyebrow { margin-bottom: 12px; }
+      h1 { max-width: 520px; font-size: clamp(38px, 10vw, 54px); }
+      .welcome-copy p:last-child { margin-top: 12px; font-size: 14px; }
+      .welcome-footer { display: none; }
+      .signin { min-height: 420px; padding: 40px 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="welcome" aria-labelledby="welcome-title">
+      <div class="wordmark"><span class="wordmark-mark" aria-hidden="true">V</span><span>Votre espace</span></div>
+      <div class="welcome-copy">
+        <p class="eyebrow">Simplement, en toute sécurité</p>
+        <h1 id="welcome-title">Ravi de vous retrouver.</h1>
+        <p>Connectez-vous pour accéder à votre espace personnel.</p>
+      </div>
+      <div class="welcome-footer">Un accès simple à votre espace.</div>
+    </section>
+
+    <section class="signin" aria-labelledby="signin-title">
+      <div class="signin-content">
+        <h2 id="signin-title">Connexion</h2>
+        <p class="intro">Utilisez votre compte Google pour continuer.</p>
+        <button class="google-button" id="google-signin" type="button">
+          <svg class="google-mark" viewBox="0 0 48 48" aria-hidden="true">
+            <path fill="#4285F4" d="M43.6 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11a9.4 9.4 0 0 1-4.1 6.2v5.2h6.7c3.9-3.6 6-8.9 6-15.4Z"/>
+            <path fill="#34A853" d="M24 44c5.5 0 10.1-1.8 13.5-4.9l-6.7-5.2c-1.8 1.2-4 2-6.8 2-5.2 0-9.6-3.5-11.2-8.2H5.9v5.4A20 20 0 0 0 24 44Z"/>
+            <path fill="#FBBC05" d="M12.8 27.7a12 12 0 0 1 0-7.4v-5.4H5.9a20 20 0 0 0 0 18.2l6.9-5.4Z"/>
+            <path fill="#EA4335" d="M24 12.1c3 0 5.6 1 7.7 3.1l5.8-5.8C34 6 29.5 4 24 4A20 20 0 0 0 5.9 14.9l6.9 5.4c1.6-4.7 6-8.2 11.2-8.2Z"/>
+          </svg>
+          <span>Se connecter avec Google</span>
+        </button>
+        <div class="divider" aria-hidden="true">ou</div>
+        <p class="notice" id="signin-notice" role="status" aria-live="polite">La connexion sécurisée avec Google vous permettra d’accéder à votre espace.</p>
+        <p class="privacy">En continuant, vous acceptez nos <a href="#conditions">conditions d’utilisation</a> et notre <a href="#confidentialite">politique de confidentialité</a>.</p>
+      </div>
+    </section>
+  </main>
+  <script>
+    document.getElementById("google-signin").addEventListener("click", () => {
+      document.getElementById("signin-notice").textContent = "La connexion Google n’est pas encore configurée pour cette page.";
+    });
+  </script>
+</body>
+</html>
